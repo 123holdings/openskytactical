@@ -1,0 +1,100 @@
+{{/*
+  navbar.html — Modern SaaS-style navigation
+  Features: Sticky, Dropdown for Capabilities, Primary CTA
+*/}}
+<nav class="sticky top-0 z-50 w-full border-b border-white/10 bg-surface/80 backdrop-blur-md transition-all duration-300" id="main-nav">
+  <div class="mx-auto max-w-container-max px-margin">
+    <div class="flex items-center justify-between h-[84px]">
+      
+      {{/* ── LEFT: Logo ────────────────────────────────────────────────── */}}
+      <div class="flex items-center h-full">
+        <a href="{{ "/" | relURL }}" class="flex items-center group">
+          <img
+            alt="OpenSky Tactical"
+            class="w-[180px] h-auto brightness-110"
+            src="{{ .Site.Params.logo | relURL }}"
+          />
+        </a>
+      </div>
+
+      {{/* ── CENTER: Main Navigation ───────────────────────────────────── */}}
+      <div class="hidden lg:flex items-center gap-10 h-full">
+        <a href="{{ "/" | relURL }}" class="font-label-tech text-on-surface hover:text-primary transition-all uppercase text-[12px] tracking-widest font-medium {{ if .IsHome }}text-primary font-bold{{ end }}">
+          Home
+        </a>
+        
+        {{/* Capabilities Dropdown */}}
+        <div class="relative group h-full flex items-center">
+          <a href="{{ "/capabilities/" | relURL }}" class="font-label-tech text-on-surface/80 hover:text-primary transition-all uppercase text-[12px] tracking-widest font-medium flex items-center gap-1 group-hover:text-primary h-full {{ if eq .RelPermalink "/capabilities/" }}text-primary font-bold{{ end }}">
+            Capabilities
+            <span class="material-symbols-outlined text-[18px] transition-transform group-hover:rotate-180">expand_more</span>
+          </a>
+          
+          <div class="absolute top-full left-0 hidden group-hover:block w-72">
+            <div class="bg-surface-container border border-white/10 shadow-2xl py-3 rounded-lg backdrop-blur-xl animate-fade-in-down mt-1">
+              <a href="{{ "/capabilities/#vehicle-detection" | relURL }}" class="block px-6 py-3 text-[13px] text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all">Vehicle Detection</a>
+              <a href="{{ "/capabilities/#weapon-detection" | relURL }}" class="block px-6 py-3 text-[13px] text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all">Gun Detection & Security Alerts</a>
+              <a href="{{ "/capabilities/#drone-systems" | relURL }}" class="block px-6 py-3 text-[13px] text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all">Drone Systems</a>
+              <a href="{{ "/capabilities/#behavior-analysis" | relURL }}" class="block px-6 py-3 text-[13px] text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all">Advanced Behavior Analysis</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="{{ "/projects/" | relURL }}" class="font-label-tech text-on-surface/80 hover:text-primary transition-all uppercase text-[12px] tracking-widest font-medium {{ if eq .RelPermalink "/projects/" }}text-primary font-bold{{ end }}">
+          Projects
+        </a>
+        <a href="{{ "/contact/" | relURL }}" class="font-label-tech text-on-surface/80 hover:text-primary transition-all uppercase text-[12px] tracking-widest font-medium {{ if eq .RelPermalink "/contact/" }}text-primary font-bold{{ end }}">
+          Contact
+        </a>
+      </div>
+
+      {{/* ── RIGHT: CTA Button ─────────────────────────────────────────── */}}
+      <div class="hidden lg:flex items-center h-full">
+        <a href="{{ "/contact/" | relURL }}" class="bg-primary text-black px-6 py-2 rounded-sm font-label-tech uppercase text-[11px] font-bold tracking-widest hover:bg-primary-fixed-dim transition-all shadow-[0_0_15px_rgba(0,209,255,0.2)] hover:shadow-[0_0_20px_rgba(0,209,255,0.4)]">
+          Get in Touch
+        </a>
+      </div>
+
+      {{/* Mobile Menu Toggle */}}
+      <div class="lg:hidden flex items-center h-full">
+        <button id="mobile-menu-toggle" class="text-on-surface p-2 flex items-center justify-center" aria-label="Toggle Menu">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{/* ── Mobile Menu ─────────────────────────────────────────────────── */}}
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-surface/95 backdrop-blur-xl absolute top-full left-0 w-full shadow-2xl">
+    <div class="p-8 space-y-6">
+      <a href="{{ "/" | relURL }}" class="block font-headline-md text-xl uppercase">Home</a>
+      
+      <div class="space-y-4">
+        <span class="block font-label-tech text-primary text-[10px] uppercase tracking-widest">Capabilities</span>
+        <div class="pl-4 space-y-3 border-l border-white/10">
+          <a href="{{ "/capabilities/#vehicle-detection" | relURL }}" class="block text-on-surface-variant hover:text-primary">Vehicle Detection</a>
+          <a href="{{ "/capabilities/#weapon-detection" | relURL }}" class="block text-on-surface-variant hover:text-primary">Gun Detection & Security Alerts</a>
+          <a href="{{ "/capabilities/#drone-systems" | relURL }}" class="block text-on-surface-variant hover:text-primary">Drone Systems</a>
+          <a href="{{ "/capabilities/#behavior-analysis" | relURL }}" class="block text-on-surface-variant hover:text-primary">Advanced Behavior Analysis</a>
+        </div>
+      </div>
+
+      <a href="{{ "/projects/" | relURL }}" class="block font-headline-md text-xl uppercase">Projects</a>
+      <a href="{{ "/contact/" | relURL }}" class="block font-headline-md text-xl uppercase">Contact</a>
+      
+      <a href="{{ "/contact/" | relURL }}" class="block w-full bg-primary text-black text-center py-4 rounded-sm font-label-tech uppercase font-bold tracking-widest mt-8">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @keyframes fade-in-down {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-down {
+    animation: fade-in-down 0.2s ease-out forwards;
+  }
+</style>

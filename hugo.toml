@@ -1,0 +1,62 @@
+baseURL = "https://opensky.tactical/"
+languageCode = "en-us"
+title = "OpenSky Tactical"
+enableRobotsTXT = true
+enableEmoji = false
+
+# Allow raw HTML in markdown content files
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[build]
+  writeStats = true
+
+[params]
+  description = "Advanced AI Detection & Tactical Systems. Real-time intelligence powered by computer vision and scalable technology solutions."
+  email = "ops@opensky.tactical"
+  address = "101 Intelligence Way,\nArlington, VA 22202"
+  logo = "/images/logo.png"
+
+# ─── Menus ───────────────────────────────────────────────────────────────────
+[[menus.main]]
+  name   = "Home"
+  url    = "/"
+  weight = 5
+
+[[menus.main]]
+  name   = "Capabilities"
+  url    = "/capabilities/"
+  weight = 10
+
+[[menus.main]]
+  name   = "Projects"
+  url    = "/projects/"
+  weight = 20
+
+[[menus.main]]
+  name   = "Contact"
+  url    = "/contact/"
+  weight = 30
+
+[[menus.footer]]
+  name   = "Capabilities"
+  url    = "/capabilities/"
+  weight = 10
+
+[[menus.footer]]
+  name   = "Projects"
+  url    = "/projects/"
+  weight = 20
+
+[[menus.footer]]
+  name   = "Contact"
+  url    = "/contact/"
+  weight = 30
+
+# ─── Output formats ──────────────────────────────────────────────────────────
+[outputs]
+  home    = ["HTML"]
+  section = ["HTML"]
+  page    = ["HTML"]

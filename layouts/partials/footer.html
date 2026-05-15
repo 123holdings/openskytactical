@@ -1,0 +1,92 @@
+{{/*
+  footer.html — Site-wide footer
+  Structure: 4 columns (Brand, Company, Case Studies, Contact) + Bottom Bar
+*/}}
+<footer class="bg-surface border-t border-white/5 pt-24 pb-12 px-margin">
+  <div class="mx-auto max-w-container-max">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+
+      {{/* ── COLUMN 1: BRAND ────────────────────────────────────────────── */}}
+      <div class="space-y-4">
+        <a href="{{ "/" | relURL }}" class="inline-block group">
+          <img
+            alt="OpenSky Tactical"
+            class="w-[180px] h-auto brightness-110"
+            src="{{ .Site.Params.logo | relURL }}"
+          />
+        </a>
+        <p class="font-body-sm text-on-surface-variant/70 max-w-xs leading-relaxed">
+          Redefining aerial intelligence through autonomous systems and real-time edge processing for security applications.
+        </p>
+      </div>
+
+      {{/* ── COLUMN 2: COMPANY ─────────────────────────────────────────── */}}
+      <div class="space-y-8 pt-8 lg:pt-10">
+        <h4 class="font-label-tech text-primary uppercase tracking-widest text-[12px] font-bold">
+          Company
+        </h4>
+        <ul class="flex flex-col gap-4 font-body-sm text-on-surface-variant" role="list">
+          <li><a class="hover:text-primary transition-colors" href="{{ "/capabilities/" | relURL }}">Capabilities</a></li>
+          <li><a class="hover:text-primary transition-colors" href="{{ "/projects/" | relURL }}">Projects</a></li>
+          <li><a class="hover:text-primary transition-colors" href="{{ "/contact/" | relURL }}">Contact</a></li>
+        </ul>
+      </div>
+
+      {{/* ── COLUMN 3: CASE STUDIES ────────────────────────────────────── */}}
+      <div class="space-y-8 pt-8 lg:pt-10">
+        <h4 class="font-label-tech text-primary uppercase tracking-widest text-[12px] font-bold">
+          Case Studies
+        </h4>
+        <ul class="flex flex-col gap-4 font-body-sm text-on-surface-variant" role="list">
+          <li><a class="hover:text-primary transition-colors" href="{{ "/projects/#smart-parking-monitoring" | relURL }}">Smart Parking Monitoring</a></li>
+          <li><a class="hover:text-primary transition-colors" href="{{ "/projects/#weapon-detection" | relURL }}">Gun Detection & Security Alerts</a></li>
+          <li><a class="hover:text-primary transition-colors" href="{{ "/projects/#drone-systems-deployment" | relURL }}">Drone Systems Deployment</a></li>
+          <li><a class="hover:text-primary transition-colors" href="{{ "/projects/#behavioral-analysis" | relURL }}">Behavioral Analysis</a></li>
+        </ul>
+      </div>
+
+      {{/* ── COLUMN 4: CONTACT ─────────────────────────────────────────── */}}
+      <div class="space-y-8 pt-8 lg:pt-10">
+        <h4 class="font-label-tech text-primary uppercase tracking-widest text-[12px] font-bold">
+          Contact
+        </h4>
+        
+        <div class="space-y-6">
+          {{/* Location Block */}}
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5" aria-hidden="true">location_on</span>
+            <span class="block font-body-sm text-on-surface-variant leading-relaxed">
+              101 Intelligence Way, Arlington, VA 22202
+            </span>
+          </div>
+
+          {{/* Email Block */}}
+          <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">mail</span>
+            <a href="mailto:ops@opensky.tactical" class="block font-body-sm text-on-surface-variant hover:text-primary transition-colors">
+              ops@opensky.tactical
+            </a>
+          </div>
+
+          {{/* Phone Block */}}
+          <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">phone_in_talk</span>
+            <span class="block font-body-sm text-on-surface-variant">
+              +1 (800) 555-0199
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {{/* ── FOOTER BOTTOM BAR ──────────────────────────────────────────── */}}
+    <div class="pt-8 border-t border-white/5 text-center lg:text-left">
+      <p class="font-body-xs text-on-surface-variant/40 uppercase tracking-widest text-[10px]">
+        © OpenSky Tactical. All rights reserved.
+      </p>
+    </div>
+
+  </div>
+</footer>

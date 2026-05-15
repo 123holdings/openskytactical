@@ -1,0 +1,11 @@
+{{/*
+  sections/capabilities/cta.html — Call-To-Action for capabilities page
+  Context: . (section object from Params.sections)
+*/}}
+<section class="mb-20 text-center py-16 glass-panel rounded-xl hud-border">
+  <h2 class="font-headline-lg text-on-surface uppercase tracking-tight mb-4">{{ .title }}</h2>
+  <p class="font-body-base text-on-surface-variant max-w-2xl mx-auto mb-8">{{ .description }}</p>
+  <a href="{{ .button_link | relURL }}" class="bg-primary text-black px-8 py-3 font-label-tech uppercase hover:bg-primary-fixed-dim transition-colors inline-flex items-center gap-2 font-bold tracking-widest rounded-sm">
+    {{ .button_text }} <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+  </a>
+</section>

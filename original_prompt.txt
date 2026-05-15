@@ -1,0 +1,37 @@
+<USER_REQUEST>
+You are a senior frontend engineer specialized in Hugo (static site generator) and Tailwind CSS.
+
+Your task is to build a complete production-ready Hugo website for a project called:
+
+"OpenSky Tactical"
+
+I will provide the HOME PAGE HTML code. You must use it as the base design reference and convert it into a reusable Hugo + Tailwind architecture.
+
+---
+
+## CORE REQUIREMENTS
+
+### 1. Tech Stack
+- Hugo (latest stable version)
+- Tailwind CSS (latest stable version)
+- No heavy frameworks (no React/Vue)
+- Clean static site architecture
+
+---
+
+### 2. MUST FOLLOW BEST PRACTICES
+
+You must strictly follow:
+
+- Hugo best practices (layouts, partials, base templates)
+- Component-based structure (reusable partials)
+- DRY principle (no duplicated HTML)
+- Tailwind utility-first styling properly organized
+- Mobile-first responsive design
+- Semantic HTML (header, main, section, footer)
+- Accessibility best practices (ARIA where needed)
+- Performance optimization (minimal DOM, optimized assets)
+
+---
+
+<truncated 3325 bytes>

@@ -1,0 +1,60 @@
+{{/*
+  sections/cta.html — Call-To-Action section
+  Context: Can be Page context (.) or Section context from modular params.
+*/}}
+{{ $heading := "" }}
+{{ $body    := "" }}
+
+{{ if .Params }}
+  {{/* Context is a Page */}}
+  {{ $heading = .Params.cta_heading }}
+  {{ $body    = .Params.cta_body }}
+{{ else }}
+  {{/* Context is likely a modular Section map */}}
+  {{ $heading = .heading }}
+  {{ $body    = .body }}
+{{ end }}
+
+{{ $heading = $heading | default "Ready to build a custom solution?" }}
+{{ $body    = $body    | default "Contact us to discuss your requirements and discover how our tactical AI stack can be tailored to your specific operational needs." }}
+
+<section
+  class="py-32 px-10 relative overflow-hidden border-t border-white/5"
+  aria-labelledby="cta-heading"
+  id="cta"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-surface to-on-primary-fixed-variant/20"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,209,255,0.05)_0%,transparent_70%)]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto text-center" data-animate>
+    <h2
+      id="cta-heading"
+      class="font-display-xl text-4xl md:text-5xl mb-6 text-on-surface"
+    >{{ $heading }}</h2>
+    <p class="font-body-base text-on-surface-variant mb-12 max-w-2xl mx-auto">
+      {{ $body }}
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+      <a
+        href="{{ "/contact/" | relURL }}"
+        class="bg-primary-container text-on-primary-container px-12 py-5
+               font-data-mono text-[14px] font-bold uppercase tracking-[0.2em]
+               hover:bg-primary transition-all active:scale-95 shadow-primary-glow"
+      >
+        Get In Touch
+      </a>
+      <a
+        href="{{ "/capabilities/" | relURL }}"
+        class="btn-outline px-12 py-5"
+      >
+        Explore Capabilities
+      </a>
+    </div>
+  </div>
+</section>

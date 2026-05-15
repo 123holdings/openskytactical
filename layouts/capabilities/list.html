@@ -1,0 +1,26 @@
+{{/*
+  layouts/capabilities/list.html — Capabilities page
+  Assembles sections from content/capabilities/_index.md frontmatter
+*/}}
+{{ define "main" }}
+<div class="flex flex-1">
+  <main class="flex-1 max-w-container-max mx-auto w-full p-gutter md:p-margin">
+    
+    {{/* ── Page Header ────────────────────────────────────────────── */}}
+    {{ with .Params.header }}
+      {{ partial "sections/capabilities/header.html" . }}
+    {{ end }}
+
+    {{/* ── Dynamic Page Sections ───────────────────────────────────── */}}
+    {{ range .Params.sections }}
+      {{ $type := .type }}
+      {{ $partialPath := printf "sections/capabilities/%s.html" $type }}
+      
+      {{ if templates.Exists (printf "partials/%s" $partialPath) }}
+        {{ partial $partialPath . }}
+      {{ end }}
+    {{ end }}
+
+  </main>
+</div>
+{{ end }}

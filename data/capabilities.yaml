@@ -1,0 +1,40 @@
+# data/capabilities.yaml
+# Source data for the Core Capabilities card grid (sections/capabilities.html)
+
+- id: vehicle-detection
+  icon: directions_car
+  title: Vehicle Detection
+  description: >
+    Tracks parking behavior, logs parking events, and identifies commercial
+    vehicles in real time.
+  features:
+    - Multi-class Classification
+    - Velocity Tracking
+
+- id: gun-detection
+  icon: emergency_home
+  title: Gun Detection & Tactical Alerts
+  description: >
+    Real-time weapon detection with directional alerts for enhanced
+    situational awareness.
+  features:
+    - Millisecond Response
+    - Automated Lockdown
+
+- id: drone-systems
+  icon: flight_takeoff
+  title: Drone Systems
+  description: >
+    Custom-built drone solutions designed for advanced operational requirements.
+  features:
+    - Swarm Intelligence
+    - Counter-Measure Signal
+
+- id: behavior-analysis
+  icon: psychology
+  title: Advanced Behavior Analysis
+  description: >
+    AI-powered analysis of human posture and anomaly detection.
+  features:
+    - Threat Prediction
+    - Anomaly Benchmarking

@@ -1,0 +1,18 @@
+# data/why_choose_us.yaml
+# Source data for the "Why Choose Us" section (sections/why-choose-us.html)
+
+- icon: memory
+  title: AI-Driven Solutions
+  description: Advanced neural networks for tactical edge processing.
+
+- icon: speed
+  title: Rapid Development
+  description: Accelerated deployment cycles for mission-critical ops.
+
+- icon: dns
+  title: Scalable Architecture
+  description: Modular architecture for seamless integration and expansion.
+
+- icon: verified
+  title: Reliable Performance
+  description: Hardened infrastructure ensuring 99.999% system uptime.

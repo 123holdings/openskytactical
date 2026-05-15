@@ -1,0 +1,107 @@
+# data/projects.yaml
+# Source data for the Projects / Use Cases page (layouts/projects/list.html)
+
+- id: urban-parking-enforcement
+  module: Vehicle Detection
+  title: Urban Parking Enforcement — Metro Transit Authority
+  description: >
+    Deployed a real-time vehicle detection system across 200+ camera nodes to
+    automatically identify and log parking violations, reducing enforcement
+    response time by 68%.
+  image: /images/projects/urban-parking.jpg
+  outcomes:
+    - value: "68%"
+      label: Faster Response
+    - value: "200+"
+      label: Camera Nodes
+    - value: "99.8%"
+      label: Accuracy Rate
+    - value: "24/7"
+      label: Live Monitoring
+
+- id: school-safety-gun-detection
+  module: Gun Detection
+  title: School Campus Safety — K–12 Security Program
+  description: >
+    Integrated weapon detection with automated lockdown triggers across
+    12 campuses, enabling sub-second threat identification and directional
+    officer alerts via radio protocol.
+  image: /images/projects/school-safety.jpg
+  outcomes:
+    - value: "<1s"
+      label: Detection Time
+    - value: "12"
+      label: Campuses Covered
+    - value: "0"
+      label: False Lockdowns
+    - value: "100%"
+      label: Officer Coverage
+
+- id: border-drone-surveillance
+  module: Drone Systems
+  title: Border Perimeter Surveillance — Customs Operations
+  description: >
+    Designed and deployed a custom UAV fleet with AI payload integration for
+    autonomous perimeter monitoring across 150 miles of terrain.
+  image: /images/projects/border-drone.jpg
+  outcomes:
+    - value: "150mi"
+      label: Coverage Area
+    - value: "72h"
+      label: Flight Endurance
+    - value: "4"
+      label: UAV Variants
+    - value: "99.999%"
+      label: Uptime SLA
+
+- id: event-behavior-monitoring
+  module: Behavior Analysis
+  title: Large-Scale Event Monitoring — National Security Detail
+  description: >
+    Deployed behavior analysis across 80+ simultaneous camera feeds at a
+    high-security event, providing real-time anomaly alerts to command staff
+    throughout a 3-day operation.
+  image: /images/projects/event-monitoring.jpg
+  outcomes:
+    - value: "80+"
+      label: Camera Feeds
+    - value: "3 days"
+      label: Operation Duration
+    - value: "0"
+      label: Security Incidents
+    - value: "15ms"
+      label: Alert Latency
+
+- id: commercial-fleet-tracking
+  module: Vehicle Detection
+  title: Commercial Fleet Intelligence — Logistics Provider
+  description: >
+    Automated classification and tracking of commercial delivery vehicles
+    across an urban logistics hub, optimizing routing and reducing dwell time.
+  image: /images/projects/fleet-tracking.jpg
+  outcomes:
+    - value: "40%"
+      label: Dwell Time Reduction
+    - value: "500+"
+      label: Vehicles/Day
+    - value: "Real-time"
+      label: Data Feed
+    - value: "3"
+      label: Months to Deploy
+
+- id: critical-infra-protection
+  module: Gun Detection
+  title: Critical Infrastructure Protection — Power Grid Facility
+  description: >
+    Hardened perimeter security with multi-zone weapon detection and automated
+    access control integration for a national energy grid facility.
+  image: /images/projects/critical-infra.jpg
+  outcomes:
+    - value: "6"
+      label: Security Zones
+    - value: "<100ms"
+      label: Alert Speed
+    - value: "AES-256"
+      label: Encryption
+    - value: "Air-gapped"
+      label: Deployment

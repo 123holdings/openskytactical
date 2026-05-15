@@ -1,0 +1,58 @@
+{{/*
+  sections/capabilities.html — Core Capabilities feature grid
+  Context: . (section object from Params.sections)
+*/}}
+<section
+  class="py-24 px-10 bg-surface"
+  aria-labelledby="capabilities-heading"
+  id="capabilities"
+>
+  <div class="mx-auto max-w-container-max">
+
+    {{/* ── Section Header ─────────────────────────────────────────── */}}
+    <div class="mb-16" data-animate>
+      <h2
+        id="capabilities-heading"
+        class="font-headline-lg text-primary-fixed-dim uppercase tracking-widest mb-2"
+      >{{ .title | default "Core Capabilities" }}</h2>
+      <div class="accent-bar"></div>
+    </div>
+
+    {{/* ── Card Grid ───────────────────────────────────────────────── */}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {{ range .items }}
+      <article
+        class="capability-card"
+        aria-labelledby="cap-{{ .id }}-title"
+        data-animate
+      >
+        <div
+          class="mb-6 flex items-center justify-center w-12 h-12 bg-primary/10 text-primary"
+          aria-hidden="true"
+        >
+          <span class="material-symbols-outlined text-3xl">{{ .icon }}</span>
+        </div>
+
+        <h3
+          id="cap-{{ .id }}-title"
+          class="font-headline-md mb-4 text-on-surface group-hover:text-primary transition-colors"
+        >{{ .title }}</h3>
+
+        <p class="font-body-sm text-on-surface-variant leading-relaxed mb-6">
+          {{ .description }}
+        </p>
+
+        <ul class="font-data-mono text-[12px] space-y-2 text-on-surface/60" role="list">
+          {{ range .features }}
+          <li class="flex items-center gap-2">
+            <span class="w-1 h-1 bg-primary flex-shrink-0" aria-hidden="true"></span>
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+      </article>
+      {{ end }}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,19 @@
+{{/*
+  layouts/contact/list.html — Contact page
+  Assembles sections from content/contact/_index.md frontmatter
+*/}}
+{{ define "main" }}
+<main class="flex-grow w-full max-w-container-max mx-auto px-8 py-16 flex flex-col gap-12">
+  
+  {{/* ── Dynamic Page Sections ───────────────────────────────────── */}}
+  {{ range .Params.sections }}
+    {{ $type := .type }}
+    {{ $partialPath := printf "sections/contact/%s.html" $type }}
+    
+    {{ if templates.Exists (printf "partials/%s" $partialPath) }}
+      {{ partial $partialPath . }}
+    {{ end }}
+  {{ end }}
+
+</main>
+{{ end }}

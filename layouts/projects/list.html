@@ -1,0 +1,26 @@
+{{/*
+  layouts/projects/list.html — Projects page
+  Assembles sections from content/projects/_index.md frontmatter
+*/}}
+{{ define "main" }}
+<div class="flex-grow flex">
+  <div class="flex-grow p-margin max-w-container-max mx-auto w-full">
+    
+    {{/* ── Page Header ────────────────────────────────────────────── */}}
+    {{ with .Params.header }}
+      {{ partial "sections/projects/header.html" . }}
+    {{ end }}
+
+    {{/* ── Dynamic Page Sections ───────────────────────────────────── */}}
+    {{ range .Params.sections }}
+      {{ $type := .type }}
+      {{ $partialPath := printf "sections/projects/%s.html" $type }}
+      
+      {{ if templates.Exists (printf "partials/%s" $partialPath) }}
+        {{ partial $partialPath . }}
+      {{ end }}
+    {{ end }}
+
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,25 @@
+{{/*
+  layouts/index.html — Homepage
+  Assembles all section partials dynamically from frontmatter
+*/}}
+{{ define "main" }}
+  
+  {{/* ── Hero Section ────────────────────────────────────────────── */}}
+  {{ with .Params.hero }}
+    {{ partial "hero.html" $ }}
+  {{ end }}
+
+  {{/* ── Dynamic Page Sections ───────────────────────────────────── */}}
+  {{ range .Params.sections }}
+    {{ $type := .type }}
+    {{ if eq $type "feature-block" }}
+      {{ partial "sections/home/feature-block.html" . }}
+    {{ else }}
+      {{ $partialPath := printf "sections/home/%s.html" $type }}
+      {{ if templates.Exists (printf "partials/%s" $partialPath) }}
+        {{ partial $partialPath . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+{{ end }}

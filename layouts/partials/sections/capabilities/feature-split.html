@@ -1,0 +1,106 @@
+{{/*
+  sections/capabilities/feature-split.html — Split layout for major features
+  Context: . (section object from Params.sections)
+*/}}
+<section class="mb-20 glass-panel rounded-xl overflow-hidden hud-border relative group scroll-mt-24" id="{{ .id }}">
+  <div class="absolute top-0 {{ if .reverse }}left-0{{ else }}right-0{{ end }} p-4 opacity-30 {{ if .is_threat }}z-10{{ end }}">
+    <span class="material-symbols-outlined text-4xl {{ if .is_threat }}text-error{{ else }}text-primary{{ end }}" data-icon="{{ .icon }}">{{ .icon }}</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+    
+    {{/* ── Content Column ─────────────────────────────────────────── */}}
+    <div class="p-8 lg:p-12 flex flex-col justify-center bg-gradient-to-br from-surface-dim to-surface-container-low border-b lg:border-b-0 {{ if .reverse }}lg:border-l order-1 lg:order-2{{ else }}lg:border-r{{ end }} border-white/5">
+      <h2 class="font-headline-lg text-on-surface uppercase mb-4 tracking-tight">{{ .title }}</h2>
+      <p class="font-body-sm text-on-surface-variant mb-6">
+        {{ .description }}
+      </p>
+
+      {{/* Feature Box (Vehicle/Gun Style) */}}
+      {{ with .feature_box }}
+      <h3 class="font-headline-md text-on-surface uppercase mb-4 text-sm tracking-wider text-primary">{{ .title }}</h3>
+      <div class="{{ if eq .title "Real-Time Officer Alert System" }}space-y-4{{ else }}grid grid-cols-1 sm:grid-cols-2 gap-4{{ end }}">
+        {{ range .items }}
+        <div class="flex items-{{ if eq .icon "warning" }}center{{ else }}start{{ end }} gap-4 bg-white/5 p-4 rounded border border-white/5 {{ if .color }}border-l-2 border-{{ .color }}/50 hover:bg-white/10{{ else if eq .icon "target" }}border-l-2 border-primary/50 hover:bg-white/10{{ end }} transition-colors">
+          <span class="material-symbols-outlined {{ if .color }}text-{{ .color }}{{ else }}text-primary{{ end }} {{ if not (eq .icon "warning") }}text-sm mt-0.5{{ end }}" data-icon="{{ .icon }}">{{ .icon }}</span>
+          <div>
+            <p class="font-body-sm text-on-surface-variant text-xs">{{ .text }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{/* Subsections (Drone Style) */}}
+      {{ with .subsections }}
+      <div class="space-y-6">
+        {{ range . }}
+        <div>
+          <h3 class="font-headline-md text-on-surface uppercase mb-3 text-sm tracking-wider text-primary">{{ .title }}</h3>
+          <div class="grid grid-cols-1 gap-2">
+            <div class="flex items-start gap-3 p-3 bg-white/5 rounded border border-white/5">
+              <span class="material-symbols-outlined text-primary text-sm mt-0.5" data-icon="{{ .icon }}">{{ .icon }}</span>
+              <p class="font-body-sm text-on-surface-variant text-xs">{{ .text }}</p>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{/* ── Visualization Column ──────────────────────────────────── */}}
+    <div class="relative min-h-[300px] lg:min-h-full {{ if .reverse }}order-2 lg:order-1{{ end }}">
+      {{ if .is_threat }}
+      <div class="absolute inset-0 bg-surface-container-low flex flex-col overflow-hidden">
+        <div class="relative flex-1">
+          <img alt="{{ .title }} Analysis" class="w-full h-full object-cover opacity-90 mix-blend-lighten" src="{{ .image }}"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 border border-error/20 pointer-events-none shadow-[inset_0_0_20px_rgba(147,0,10,0.2)]"></div>
+          <div class="absolute top-4 left-4 flex flex-col gap-1">
+            <div class="bg-error/10 border border-error/30 px-2 py-0.5 rounded-sm">
+              <span class="font-data-mono text-[10px] text-error uppercase tracking-tighter">{{ .hud.left }}</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 right-4">
+            <div class="bg-surface-dim/80 backdrop-blur-sm border border-outline/30 p-2 rounded-sm">
+              <span class="font-data-mono text-[10px] text-primary uppercase">{{ .hud.right }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ else }}
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ .image }}');">
+        <div class="absolute inset-0 bg-surface-dim/60 mix-blend-multiply"></div>
+        <!-- HUD Elements Overlay -->
+        <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between">
+          <div class="flex justify-between">
+            <span class="font-data-mono text-primary text-xs">{{ .hud.left }}</span>
+            <span class="font-data-mono text-primary text-xs">{{ .hud.right }}</span>
+          </div>
+          
+          {{ if .is_drone }}
+          <div class="flex items-center justify-center flex-1">
+            <div class="w-32 h-32 border border-primary/30 rounded flex items-center justify-center relative">
+              <div class="absolute inset-0 border border-primary/10 scale-150 animate-pulse"></div>
+              <span class="material-symbols-outlined text-primary text-4xl">target</span>
+            </div>
+          </div>
+          {{ else }}
+          <div class="w-full h-[1px] bg-primary/20 relative">
+            <div class="absolute top-[-2px] left-[20%] w-1 h-1 bg-primary"></div>
+            <div class="absolute top-[-2px] right-[40%] w-1 h-1 bg-primary"></div>
+          </div>
+          {{ end }}
+
+          <div class="flex justify-between items-end">
+            <div class="border-l-2 border-b-2 border-primary w-8 h-8 opacity-50"></div>
+            <div class="border-r-2 border-b-2 border-primary w-8 h-8 opacity-50"></div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,71 @@
+{{/*
+  layouts/_default/list.html — Default list page fallback
+*/}}
+{{ define "main" }}
+
+{{/* ── Page Hero ─────────────────────────────────────────────────── */}}
+<header class="page-hero bg-surface" aria-labelledby="list-title">
+  <div class="mx-auto max-w-container-max relative z-10">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,209,255,0.05)_0%,transparent_60%)]"
+      aria-hidden="true"
+    ></div>
+    <span class="section-label">{{ .Section | humanize | upper }}</span>
+    <h1
+      id="list-title"
+      class="font-display-xl text-5xl md:text-6xl leading-none tracking-tighter text-on-surface mb-6"
+    >{{ .Title }}</h1>
+    {{ with .Params.description }}
+    <p class="font-body-base text-on-surface-variant max-w-xl text-lg border-l-2 border-primary/30 pl-6">
+      {{ . }}
+    </p>
+    {{ end }}
+  </div>
+</header>
+
+{{/* ── Page Content ─────────────────────────────────────────────── */}}
+<section class="py-24 px-10 bg-surface">
+  <div class="mx-auto max-w-container-max">
+
+    {{/* Render markdown content from _index.md */}}
+    {{ with .Content }}
+    <div class="prose prose-invert max-w-none mb-20
+                prose-p:text-on-surface-variant prose-headings:text-on-surface
+                prose-a:text-primary">
+      {{ . }}
+    </div>
+    {{ end }}
+
+    {{/* ── Child Pages Grid ──────────────────────────────────── */}}
+    {{ if .Pages }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {{ range .Pages }}
+      <article class="capability-card" aria-labelledby="page-{{ .File.UniqueID }}">
+        {{ with .Params.icon }}
+        <div class="mb-6 flex items-center justify-center w-12 h-12 bg-primary/10 text-primary" aria-hidden="true">
+          <span class="material-symbols-outlined text-3xl">{{ . }}</span>
+        </div>
+        {{ end }}
+        <h2 id="page-{{ .File.UniqueID }}" class="font-headline-md text-on-surface group-hover:text-primary transition-colors mb-3">
+          {{ .Title }}
+        </h2>
+        {{ with .Params.description }}
+        <p class="font-body-sm text-on-surface-variant mb-6">{{ . }}</p>
+        {{ end }}
+        <a
+          href="{{ .RelPermalink }}"
+          class="font-label-tech text-primary uppercase text-[12px] tracking-widest hover:text-primary-fixed-dim transition-colors flex items-center gap-2"
+        >
+          View details
+          <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+
+{{ partial "sections/cta.html" . }}
+{{ end }}

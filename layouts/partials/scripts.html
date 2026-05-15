@@ -1,0 +1,106 @@
+{{/*
+  scripts.html — Site-wide JavaScript
+  Handles: mobile menu toggle, scroll-based navbar opacity, smooth interactions
+*/}}
+<script>
+  (() => {
+    "use strict";
+
+    /* ── Mobile Menu Toggle ──────────────────────────────────────────── */
+    const toggle = document.getElementById("mobile-menu-toggle");
+    const menu   = document.getElementById("mobile-menu");
+
+    if (toggle && menu) {
+      const icon = toggle.querySelector(".material-symbols-outlined");
+
+      toggle.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        menu.classList.toggle("hidden");
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        if (icon) icon.textContent = isOpen ? "menu" : "close";
+      });
+
+      /* Close on outside click */
+      document.addEventListener("click", (e) => {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.add("hidden");
+          toggle.setAttribute("aria-expanded", "false");
+          if (icon) icon.textContent = "menu";
+        }
+      });
+
+      /* Close on Escape key */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !menu.classList.contains("hidden")) {
+          menu.classList.add("hidden");
+          toggle.setAttribute("aria-expanded", "false");
+          if (icon) icon.textContent = "menu";
+          toggle.focus();
+        }
+      });
+    }
+
+    /* ── Contact Form (if present) ───────────────────────────────────── */
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn   = contactForm.querySelector('[type="submit"]');
+        const feedback = document.getElementById("form-feedback");
+        if (!btn) return;
+
+        btn.disabled = true;
+        btn.textContent = "TRANSMITTING…";
+
+        try {
+          const res = await fetch(contactForm.action, {
+            method:  "POST",
+            body:    new FormData(contactForm),
+            headers: { Accept: "application/json" },
+          });
+
+          if (res.ok) {
+            if (feedback) {
+              feedback.textContent = "Message received. We will respond within 24–48 hours.";
+              feedback.classList.remove("hidden", "text-error");
+              feedback.classList.add("text-primary");
+            }
+            contactForm.reset();
+            btn.textContent = "SENT ✓";
+          } else {
+            throw new Error("Network response not OK");
+          }
+        } catch {
+          if (feedback) {
+            feedback.textContent = "Transmission failed. Please contact us directly at ops@opensky.tactical";
+            feedback.classList.remove("hidden", "text-primary");
+            feedback.classList.add("text-error");
+          }
+          btn.disabled    = false;
+          btn.textContent = "RETRY";
+        }
+      });
+    }
+
+    /* ── Intersection Observer — animate cards on scroll ─────────────── */
+    const animTargets = document.querySelectorAll("[data-animate]");
+    if ("IntersectionObserver" in window && animTargets.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in-up");
+              entry.target.style.opacity = "1";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      animTargets.forEach((el) => {
+        el.style.opacity = "0";
+        observer.observe(el);
+      });
+    }
+  })();
+</script>

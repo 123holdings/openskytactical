@@ -1,0 +1,35 @@
+{{/*
+  layouts/_default/single.html — Generic single page (privacy policy, terms, etc.)
+*/}}
+{{ define "main" }}
+<article
+  class="py-24 px-10 bg-surface"
+  aria-labelledby="page-title"
+>
+  <div class="mx-auto max-w-3xl">
+
+    {{/* ── Page Header ─────────────────────────────────────────── */}}
+    <header class="mb-16 border-b border-outline-variant pb-10">
+      <span class="section-label">{{ .Section | humanize | upper }}</span>
+      <h1
+        id="page-title"
+        class="font-headline-lg text-on-surface uppercase tracking-widest mb-4"
+      >{{ .Title }}</h1>
+      {{ with .Params.description }}
+      <p class="font-body-base text-on-surface-variant max-w-xl">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    {{/* ── Body Content ────────────────────────────────────────── */}}
+    <div class="prose prose-invert prose-lg max-w-none
+                prose-headings:font-display-xl prose-headings:text-on-surface
+                prose-p:text-on-surface-variant prose-p:font-body-base
+                prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-fixed-dim
+                prose-strong:text-on-surface prose-code:text-primary
+                prose-li:text-on-surface-variant">
+      {{ .Content }}
+    </div>
+
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,49 @@
+{{/*
+  sections/tech-stack.html — Unified Technical Ecosystem
+  Context: . (section object from Params.sections)
+*/}}
+<section
+  class="bg-surface-container-low py-24 px-10 border-y border-white/5"
+  aria-labelledby="tech-heading"
+>
+  <div class="mx-auto max-w-container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <div data-animate>
+      <span class="section-label">{{ .label }}</span>
+      <h2
+        id="tech-heading"
+        class="font-display-xl text-4xl mb-8 leading-tight text-on-surface"
+      >
+        {{ .title | safeHTML }}
+      </h2>
+      <p class="font-body-base text-on-surface-variant mb-12 max-w-lg">
+        {{ .description }}
+      </p>
+
+      <div class="grid grid-cols-2 gap-6" role="list">
+        {{ range .stats }}
+        <div class="stat-block" role="listitem">
+          <span class="font-data-mono text-[24px] text-on-surface block font-bold">{{ .value }}</span>
+          <span class="font-label-tech text-on-surface-variant uppercase text-[10px]">{{ .label }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="relative" aria-hidden="true" data-animate>
+      <div class="grid grid-cols-2 gap-4">
+        {{ range $idx, $img := .images }}
+        <div class="aspect-square bg-surface-container-highest flex items-center justify-center border border-white/10 group overflow-hidden {{ if eq $idx 1 }}mt-8{{ else if eq $idx 2 }}-mt-8{{ end }}">
+          <img
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            src="{{ $img }}"
+            alt="Technical visualization"
+            loading="lazy"
+          />
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+</section>

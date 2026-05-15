@@ -1,0 +1,16 @@
+{{/*
+  sections/projects/cta.html — Call-To-Action for projects page
+  Context: . (section object from Params.sections)
+*/}}
+<section class="border border-primary bg-primary/5 p-8 rounded-lg flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+  <div class="z-10 relative">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight mb-2">{{ .title }}</h2>
+    <p class="font-body-base text-body-base text-on-surface-variant max-w-xl">
+      {{ .description }}
+    </p>
+  </div>
+  <a href="{{ .button_link | relURL }}" class="z-10 bg-primary text-black font-label-tech uppercase px-8 py-4 rounded-DEFAULT hover:bg-primary-fixed-dim transition-colors active:scale-95 whitespace-nowrap shadow-[0_0_20px_rgba(0,209,255,0.3)]">
+    {{ .button_text }}
+  </a>
+</section>
