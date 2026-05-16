@@ -1,9 +1,5 @@
-{{/*
-  navbar.html — Modern SaaS-style navigation
-  Features: Sticky, Dropdown for Capabilities, Primary CTA
-*/}}
-<nav class="sticky top-0 z-50 w-full border-b border-white/10 bg-surface/80 backdrop-blur-md transition-all duration-300" id="main-nav">
-  <div class="mx-auto max-w-container-max px-margin">
+<nav class="sticky top-0 z-[100] w-full border-b border-white/10 transition-all duration-300" id="main-nav" style="background-color: #121416 !important;">
+  <div class="mx-auto max-w-container-max px-margin relative z-50">
     <div class="flex items-center justify-between h-[84px]">
       
       {{/* ── LEFT: Logo ────────────────────────────────────────────────── */}}
@@ -11,7 +7,7 @@
         <a href="{{ "/" | relURL }}" class="flex items-center group">
           <img
             alt="OpenSky Tactical"
-            class="w-[180px] h-auto brightness-110"
+            class="brightness-110 nav-logo"
             src="{{ .Site.Params.logo | relURL }}"
           />
         </a>
@@ -57,34 +53,14 @@
 
       {{/* Mobile Menu Toggle */}}
       <div class="lg:hidden flex items-center h-full">
-        <button id="mobile-menu-toggle" class="text-on-surface p-2 flex items-center justify-center" aria-label="Toggle Menu">
+        <button 
+          onclick="const m = document.getElementById('mobile-menu'); m.classList.add('active'); document.body.style.overflow='hidden';"
+          class="text-on-surface p-2 flex items-center justify-center relative z-50" 
+          aria-label="Open Menu"
+        >
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
-    </div>
-  </div>
-
-  {{/* ── Mobile Menu ─────────────────────────────────────────────────── */}}
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-surface/95 backdrop-blur-xl absolute top-full left-0 w-full shadow-2xl">
-    <div class="p-8 space-y-6">
-      <a href="{{ "/" | relURL }}" class="block font-headline-md text-xl uppercase">Home</a>
-      
-      <div class="space-y-4">
-        <span class="block font-label-tech text-primary text-[10px] uppercase tracking-widest">Capabilities</span>
-        <div class="pl-4 space-y-3 border-l border-white/10">
-          <a href="{{ "/capabilities/#vehicle-detection" | relURL }}" class="block text-on-surface-variant hover:text-primary">Vehicle Detection</a>
-          <a href="{{ "/capabilities/#weapon-detection" | relURL }}" class="block text-on-surface-variant hover:text-primary">Gun Detection & Security Alerts</a>
-          <a href="{{ "/capabilities/#drone-systems" | relURL }}" class="block text-on-surface-variant hover:text-primary">Drone Systems</a>
-          <a href="{{ "/capabilities/#behavior-analysis" | relURL }}" class="block text-on-surface-variant hover:text-primary">Advanced Behavior Analysis</a>
-        </div>
-      </div>
-
-      <a href="{{ "/projects/" | relURL }}" class="block font-headline-md text-xl uppercase">Projects</a>
-      <a href="{{ "/contact/" | relURL }}" class="block font-headline-md text-xl uppercase">Contact</a>
-      
-      <a href="{{ "/contact/" | relURL }}" class="block w-full bg-primary text-black text-center py-4 rounded-sm font-label-tech uppercase font-bold tracking-widest mt-8">
-        Get in Touch
-      </a>
     </div>
   </div>
 </nav>
@@ -96,5 +72,14 @@
   }
   .animate-fade-in-down {
     animation: fade-in-down 0.2s ease-out forwards;
+  }
+  .nav-logo {
+    width: 140px !important;
+    height: auto !important;
+  }
+  @media (min-width: 1024px) {
+    .nav-logo {
+      width: 180px !important;
+    }
   }
 </style>

@@ -13,6 +13,75 @@
 
   {{ partial "footer.html" . }}
 
+  <style>
+    #mobile-menu {
+      background-color: #121416 !important;
+      background: #121416 !important;
+      opacity: 1 !important;
+      z-index: 99999 !important;
+      display: none; /* JS will change to flex */
+    }
+    #mobile-menu.active {
+      display: flex !important;
+    }
+    .nav-logo {
+      width: 140px !important;
+      height: auto !important;
+    }
+  </style>
+
+  {{/* ── Mobile Menu (Full-Screen Overlay) ────────────────────────────── */}}
+  <div id="mobile-menu" class="fixed inset-0 flex-col overflow-hidden">
+    {{/* Mobile Menu Header */}}
+    <div class="flex items-center justify-between h-[84px] px-margin border-b border-white/5">
+      <img
+        alt="OpenSky Tactical"
+        class="brightness-110 nav-logo"
+        src="{{ .Site.Params.logo | relURL }}"
+      />
+      <button 
+        onclick="document.getElementById('mobile-menu').classList.remove('active'); document.body.style.overflow='';"
+        class="text-on-surface p-2 flex items-center justify-center" aria-label="Close Menu"
+      >
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+    </div>
+
+    {{/* Mobile Menu Links */}}
+    <div class="flex-1 overflow-y-auto p-8 space-y-10">
+      <nav class="space-y-8">
+        <a href="{{ "/" | relURL }}" class="block font-display-xl text-[32px] uppercase tracking-tighter hover:text-primary transition-all">Home</a>
+        
+        {{/* Capabilities Accordion */}}
+        <div class="space-y-6">
+          <button
+            onclick="const sub = document.getElementById('mobile-submenu'); const arr = document.getElementById('mobile-submenu-arrow'); sub.style.display = (sub.style.display === 'block') ? 'none' : 'block'; arr.style.transform = (sub.style.display === 'block') ? 'rotate(180deg)' : 'rotate(0deg)';"
+            class="flex items-center justify-between w-full font-display-xl text-[32px] uppercase tracking-tighter text-left hover:text-primary transition-all"
+          >
+            Capabilities
+            <span class="material-symbols-outlined text-3xl transition-transform" id="mobile-submenu-arrow">expand_more</span>
+          </button>
+          
+          <div id="mobile-submenu" style="display:none;" class="pl-6 space-y-6 border-l-2 border-primary/20">
+            <a href="{{ "/capabilities/#vehicle-detection" | relURL }}" class="block text-xl text-on-surface-variant hover:text-primary transition-colors">Vehicle Detection</a>
+            <a href="{{ "/capabilities/#weapon-detection" | relURL }}" class="block text-xl text-on-surface-variant hover:text-primary transition-colors">Gun Detection & Security</a>
+            <a href="{{ "/capabilities/#drone-systems" | relURL }}" class="block text-xl text-on-surface-variant hover:text-primary transition-colors">Drone Systems</a>
+            <a href="{{ "/capabilities/#behavior-analysis" | relURL }}" class="block text-xl text-on-surface-variant hover:text-primary transition-colors">Behavior Analysis</a>
+          </div>
+        </div>
+
+        <a href="{{ "/projects/" | relURL }}" class="block font-display-xl text-[32px] uppercase tracking-tighter hover:text-primary transition-all">Projects</a>
+        <a href="{{ "/contact/" | relURL }}" class="block font-display-xl text-[32px] uppercase tracking-tighter hover:text-primary transition-all">Contact</a>
+      </nav>
+      
+      <div class="pt-12 border-t border-white/5">
+        <a href="{{ "/contact/" | relURL }}" class="block w-full bg-primary text-black text-center py-6 font-label-tech uppercase font-bold tracking-widest text-lg shadow-primary-glow">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </div>
+
   {{ partial "scripts.html" . }}
 
 </body>

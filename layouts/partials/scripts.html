@@ -7,38 +7,8 @@
     "use strict";
 
     /* ── Mobile Menu Toggle ──────────────────────────────────────────── */
-    const toggle = document.getElementById("mobile-menu-toggle");
-    const menu   = document.getElementById("mobile-menu");
-
-    if (toggle && menu) {
-      const icon = toggle.querySelector(".material-symbols-outlined");
-
-      toggle.addEventListener("click", () => {
-        const isOpen = !menu.classList.contains("hidden");
-        menu.classList.toggle("hidden");
-        toggle.setAttribute("aria-expanded", String(!isOpen));
-        if (icon) icon.textContent = isOpen ? "menu" : "close";
-      });
-
-      /* Close on outside click */
-      document.addEventListener("click", (e) => {
-        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-          menu.classList.add("hidden");
-          toggle.setAttribute("aria-expanded", "false");
-          if (icon) icon.textContent = "menu";
-        }
-      });
-
-      /* Close on Escape key */
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !menu.classList.contains("hidden")) {
-          menu.classList.add("hidden");
-          toggle.setAttribute("aria-expanded", "false");
-          if (icon) icon.textContent = "menu";
-          toggle.focus();
-        }
-      });
-    }
+    // Logic moved to inline handlers in baseof.html and navbar.html for maximum reliability.
+    
 
     /* ── Contact Form (if present) ───────────────────────────────────── */
     const contactForm = document.getElementById("contact-form");
