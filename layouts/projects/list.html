@@ -12,12 +12,19 @@
     {{ end }}
 
     {{/* ── Dynamic Page Sections ───────────────────────────────────── */}}
+    {{ $projectIndex := 0 }}
     {{ range .Params.sections }}
       {{ $type := .type }}
       {{ $partialPath := printf "sections/projects/%s.html" $type }}
       
       {{ if templates.Exists (printf "partials/%s" $partialPath) }}
-        {{ partial $partialPath . }}
+        {{ if eq $type "project-item" }}
+          {{ $ctx := merge (dict) . (dict "Index" $projectIndex) }}
+          {{ partial $partialPath $ctx }}
+          {{ $projectIndex = add $projectIndex 1 }}
+        {{ else }}
+          {{ partial $partialPath . }}
+        {{ end }}
       {{ end }}
     {{ end }}
 

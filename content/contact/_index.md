@@ -19,6 +19,7 @@ sections:
           label: "Agency / Organization"
           placeholder: "e.g. Arlington PD"
         email: "Email Address"
+        phone: "Phone Number"
         message: "Message / Requirements"
     info:
       title: "Our Information"
