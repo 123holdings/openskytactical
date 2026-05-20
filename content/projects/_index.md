@@ -31,7 +31,7 @@ sections:
   - type: "project-item"
     title: "Drone Systems Deployment"
     subtitle: "Autonomous aerial surveillance and multispectral data aggregation"
-    image: "/images/project-drone-systems.jpg"
+    image: "/images/project-drone-systems.png"
     tag: ""
     description: "We deploy modular drone systems engineered for persistent monitoring and rapid response. These units feature integrated multispectral sensors and autonomous flight protocols, allowing for seamless operation in GPS-denied environments. The deployment provides monitoring centers with a versatile aerial tier for real-time data and modular payload delivery across diverse environments."
 
@@ -39,7 +39,7 @@ sections:
   - type: "project-item"
     title: "Behavioral Analysis"
     subtitle: "Predictive threat modeling through advanced human kinematics and deep learning"
-    image: "/images/project-behavior-analysis.jpg"
+    image: "/images/project-behavior-analysis.png"
     tag: ""
     description: "Our behavioral analysis engine leverages deep learning to monitor human kinetics and identify predictive markers of kinetic intent. By analyzing posture, movement velocity, and proximity patterns, the system flags anomalies before escalations occur. This proactive intelligence layer transforms standard surveillance into an active defense grid capable of early threat detection in crowded public spaces."
 
