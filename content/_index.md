@@ -90,6 +90,7 @@ sections:
     title: "Gun Detection & Security Alerts"
     description: "Advanced AI system for rapid weapon identification and agency situational awareness."
     image: "/images/gun-detection.png"
+    full_image: true
     threat_level: "CRITICAL"
     feature_box:
       title: "Real-Time Officer Alert System"
