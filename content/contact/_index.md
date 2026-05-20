@@ -29,7 +29,7 @@ sections:
           content: "101 Intelligence Way<br>Arlington, VA 22202"
         - icon: "mail"
           title: "Email"
-          content: "ops@openskytactical.com"
+          content: "ops@openskyintelligence.com"
         - icon: "phone_in_talk"
           title: "Phone Number"
           content: "+1 (800) 555-0199"

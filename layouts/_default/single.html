@@ -2,34 +2,71 @@
   layouts/_default/single.html — Generic single page (privacy policy, terms, etc.)
 */}}
 {{ define "main" }}
-<article
-  class="py-24 px-10 bg-surface"
-  aria-labelledby="page-title"
->
-  <div class="mx-auto max-w-3xl">
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin py-24">
+  <article class="max-w-4xl mx-auto" aria-labelledby="page-title">
+
+    {{/* ── Scoped Spacing Overrides ─────────────────────────────── */}}
+    <style>
+      .legal-content h2, 
+      .legal-content h3, 
+      .legal-content h4 {
+        margin-top: 3.5rem !important;      /* 56px spacing above headings */
+        margin-bottom: 1.5rem !important;   /* 24px spacing below headings */
+        font-weight: 700 !important;
+        letter-spacing: 0.05em !important;
+        text-transform: uppercase !important;
+        color: #ffffff !important;
+      }
+
+      .legal-content p {
+        margin-top: 1.5rem !important;      /* 24px spacing above paragraphs */
+        margin-bottom: 1.5rem !important;   /* 24px spacing below paragraphs */
+        line-height: 1.85 !important;       /* Comfortable reading height */
+        color: rgba(226, 226, 229, 0.8) !important;
+      }
+
+      .legal-content ul, 
+      .legal-content ol {
+        margin-top: 1.75rem !important;
+        margin-bottom: 1.75rem !important;
+        padding-left: 1.75rem !important;
+      }
+
+      .legal-content li {
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.8 !important;
+        color: rgba(226, 226, 229, 0.8) !important;
+      }
+
+      .legal-content strong {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+      }
+
+      /* First heading should not have top margin */
+      .legal-content > *:first-child {
+        margin-top: 0 !important;
+      }
+    </style>
 
     {{/* ── Page Header ─────────────────────────────────────────── */}}
-    <header class="mb-16 border-b border-outline-variant pb-10">
-      <span class="section-label">{{ .Section | humanize | upper }}</span>
+    <header class="mb-16 pb-4">
+      <span class="font-data-mono text-[11px] text-primary tracking-widest uppercase">{{ .Section | humanize | upper }}</span>
       <h1
         id="page-title"
-        class="font-headline-lg text-on-surface uppercase tracking-widest mb-4"
+        class="font-headline-lg text-4xl md:text-5xl text-on-surface uppercase tracking-wider mt-2 mb-4 font-bold"
       >{{ .Title }}</h1>
       {{ with .Params.description }}
-      <p class="font-body-base text-on-surface-variant max-w-xl">{{ . }}</p>
+      <p class="font-body-base text-on-surface-variant/80 max-w-2xl leading-relaxed">{{ . }}</p>
       {{ end }}
     </header>
 
     {{/* ── Body Content ────────────────────────────────────────── */}}
-    <div class="prose prose-invert prose-lg max-w-none
-                prose-headings:font-display-xl prose-headings:text-on-surface
-                prose-p:text-on-surface-variant prose-p:font-body-base
-                prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-fixed-dim
-                prose-strong:text-on-surface prose-code:text-primary
-                prose-li:text-on-surface-variant">
+    <div class="prose prose-invert prose-lg max-w-none legal-content">
       {{ .Content }}
     </div>
 
-  </div>
-</article>
+  </article>
+</main>
 {{ end }}

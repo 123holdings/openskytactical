@@ -1,7 +1,7 @@
 {
-  "name": "opensky-tactical",
+  "name": "opensky-intelligence",
   "version": "1.0.0",
-  "description": "OpenSky Tactical — Advanced AI Detection & Tactical Systems",
+  "description": "OpenSky Intelligence — Advanced AI Detection & Security Systems",
   "private": true,
   "scripts": {
     "dev": "hugo server --disableFastRender --buildDrafts",

@@ -11,7 +11,7 @@
       <div class="space-y-4">
         <a href="{{ "/" | relURL }}" class="inline-block group">
           <img
-            alt="OpenSky Tactical"
+            alt="OpenSky Intelligence"
             class="w-[180px] h-auto brightness-110"
             src="{{ .Site.Params.logo | relURL }}"
           />
@@ -64,8 +64,8 @@
           {{/* Email Block */}}
           <div class="flex items-center gap-4">
             <span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">mail</span>
-            <a href="mailto:ops@opensky.tactical" class="block font-body-sm text-on-surface-variant hover:text-primary transition-colors">
-              ops@opensky.tactical
+            <a href="mailto:ops@opensky.intelligence" class="block font-body-sm text-on-surface-variant hover:text-primary transition-colors">
+              ops@opensky.intelligence
             </a>
           </div>
 
@@ -82,10 +82,15 @@
     </div>
 
     {{/* ── FOOTER BOTTOM BAR ──────────────────────────────────────────── */}}
-    <div class="pt-8 border-t border-white/5 text-center lg:text-left">
-      <p class="font-body-xs text-on-surface-variant/40 uppercase tracking-widest text-[10px]">
-        © OpenSky Tactical. All rights reserved.
+    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-body-xs text-on-surface-variant/40 uppercase tracking-widest text-[10px] text-center sm:text-left">
+        © OpenSky Intelligence. All rights reserved.
       </p>
+      <div class="flex items-center gap-6 font-body-xs text-on-surface-variant/40 uppercase tracking-widest text-[10px]">
+        <a href="{{ "/privacy-policy/" | relURL }}" class="hover:text-primary transition-colors">Privacy Policy</a>
+        <span class="text-white/10" aria-hidden="true">|</span>
+        <a href="{{ "/terms-of-service/" | relURL }}" class="hover:text-primary transition-colors">Terms of Use</a>
+      </div>
     </div>
 
   </div>

@@ -1,5 +1,5 @@
 ---
-title: "OpenSky Tactical"
+title: "OpenSky Intelligence"
 description: "Advanced AI Detection & Security Systems. Real-time intelligence powered by computer vision and scalable technology solutions."
 
 # ─── Hero Section ───────────────────────────────────────────────────────────
@@ -40,7 +40,7 @@ sections:
   - type: "tech-stack"
     label: "System Integration"
     title: "Unified Technical Ecosystem"
-    description: "OpenSky Tactical operates on a modular, air-gapped architecture designed for rapid deployment in demanding environments. Our infrastructure is hardened for maximum data integrity and security."
+    description: "OpenSky Intelligence operates on a modular, air-gapped architecture designed for rapid deployment in demanding environments. Our infrastructure is hardened for maximum data integrity and security."
     stats:
       - value: "99.999%"
         label: "System Uptime"

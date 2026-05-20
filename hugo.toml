@@ -1,6 +1,6 @@
 baseURL = "https://opensky.tactical/"
 languageCode = "en-us"
-title = "OpenSky Tactical"
+title = "OpenSky Intelligence"
 enableRobotsTXT = true
 enableEmoji = false
 
@@ -14,8 +14,8 @@ enableEmoji = false
   writeStats = true
 
 [params]
-  description = "Advanced AI Detection & Tactical Systems. Real-time intelligence powered by computer vision and scalable technology solutions."
-  email = "ops@opensky.tactical"
+  description = "Advanced AI Detection & Security Systems. Real-time intelligence powered by computer vision and scalable technology solutions."
+  email = "ops@opensky.intelligence"
   address = "101 Intelligence Way,\nArlington, VA 22202"
   logo = "/images/logo.png"
 

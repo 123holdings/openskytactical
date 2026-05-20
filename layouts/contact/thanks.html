@@ -1,0 +1,75 @@
+{{ define "main" }}
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin py-24 flex flex-col items-center justify-center relative min-h-[65vh]">
+  
+  {{/* ─── Premium Elegant Card Container ────────────────────────────── */}}
+  <div class="w-full max-w-xl glass-panel border border-white/10 rounded-lg p-8 md:p-12 shadow-primary-glow flex flex-col items-center bg-surface-container-low/40 backdrop-blur-md relative overflow-hidden">
+    
+    {{/* Accent top border highlight */}}
+    <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary-container to-transparent opacity-60"></div>
+    
+    {{/* ─── Elegant Success Icon ────────────────────────── */}}
+    <div class="w-16 h-16 mb-6 flex items-center justify-center rounded-full bg-primary/10 border border-primary/20">
+      <svg class="w-8 h-8 text-primary drop-shadow-[0_0_6px_rgba(164,230,255,0.4)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+
+    {{/* ─── Header & Message ───────────────────────────────────── */}}
+    <h1 class="font-display-xl text-3xl md:text-4xl text-on-surface tracking-wide mb-4 text-center font-bold">
+      Thank You
+    </h1>
+    
+    <div class="w-16 h-[2px] bg-primary/30 mb-6"></div>
+
+    <p class="font-body-base text-on-surface-variant text-center leading-relaxed mb-8 max-w-md">
+      We appreciate your interest in OpenSky Intelligence. Your inquiry has been successfully received, and a representative from our team will review your message and contact you within one business day.
+    </p>
+
+    {{/* ─── Standard Redirect Element ──────────────────────────────────── */}}
+    <div class="flex items-center gap-3 text-xs text-on-surface-variant/70 font-label-tech tracking-wider uppercase mb-8">
+      <svg class="animate-spin h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Redirecting to home in <span id="countdown-num" class="font-bold text-primary">5</span> seconds...</span>
+    </div>
+
+    {{/* ─── Professional CTA Actions ───────────────────────────────────────── */}}
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+      <a 
+        href="{{ "/" | relURL }}" 
+        class="w-full sm:w-auto px-8 py-3 bg-primary text-surface-container-lowest font-label-tech text-xs uppercase tracking-widest font-bold text-center hover:bg-primary-fixed-dim transition-all active:scale-95 shadow-primary-glow rounded-DEFAULT"
+      >
+        Return to Home
+      </a>
+      <a 
+        href="{{ "/capabilities/" | relURL }}" 
+        class="w-full sm:w-auto px-8 py-3 border border-white/10 hover:border-primary/50 text-white font-label-tech text-xs uppercase tracking-widest font-bold text-center hover:bg-white/5 transition-all active:scale-95 rounded-DEFAULT"
+      >
+        View Capabilities
+      </a>
+    </div>
+
+  </div>
+
+  {{/* ─── Automatic Redirect Script ───────────────────────────────── */}}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let count = 5;
+      const countNumEl = document.getElementById('countdown-num');
+      
+      const timer = setInterval(() => {
+        count--;
+        if (countNumEl) {
+          countNumEl.textContent = count;
+        }
+        if (count <= 0) {
+          clearInterval(timer);
+          window.location.href = "{{ "/" | relURL }}";
+        }
+      }, 1000);
+    });
+  </script>
+
+</main>
+{{ end }}

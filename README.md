@@ -1,6 +1,6 @@
-# OpenSky Tactical — Hugo + Tailwind Website
+# OpenSky Intelligence — Hugo + Tailwind Website
 
-Production-ready Hugo static site for **OpenSky Tactical**, featuring a dark tactical UI built with Tailwind CSS v3 and Hugo Pipes.
+Production-ready Hugo static site for **OpenSky Intelligence**, featuring a dark tactical UI built with Tailwind CSS v3 and Hugo Pipes.
 
 ---
 
