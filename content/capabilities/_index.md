@@ -17,7 +17,7 @@ sections:
     icon: "directions_car"
     title: "Vehicle Detection"
     description: "Our vehicle detection system uses advanced computer vision to monitor traffic and parking behavior in real time."
-    image: "/images/vehicle-detection-2.jpg"
+    image: "/images/vehicle-detection-2.png"
     hud:
       left: "SYSTEM STATE: OPTIMAL"
       right: "TRACKING: ACTIVE"
@@ -66,7 +66,7 @@ sections:
     icon: "flight"
     title: "Drone Systems"
     description: "We design and develop specialized drone systems tailored for advanced system requirements and real-world deployment."
-    image: "/images/drone-systems-2.jpg"
+    image: "/images/drone-systems-2.png"
     hud:
       left: "UAV LINK: STABLE"
       right: "SIGNAL: 100%"

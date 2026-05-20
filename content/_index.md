@@ -116,7 +116,7 @@ sections:
     label: "Unmanned Systems 03"
     title: "Drone Systems"
     description: "Specialized unmanned aerial solutions designed for advanced monitoring and system support."
-    image: "/images/drone-systems.jpg"
+    image: "/images/drone-systems.png"
     system_name: "OVERSIGHT_v4"
     feature_box:
       title: "Modular & Scalable Design"
@@ -140,7 +140,7 @@ sections:
     label: "Detection System 04"
     title: "Advanced Behavior Analysis"
     description: "Intelligent behavior analysis system providing real-time interpretation of movement and spatial orientation."
-    image: "/images/behavior-analysis.jpg"
+    image: "/images/behavior-analysis.png"
     module_name: "BEHAVIOR_v3"
     features_list:
       - "Detects body posture (standing, sitting, lying down)"
