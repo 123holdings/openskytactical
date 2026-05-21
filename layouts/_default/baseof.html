@@ -13,22 +13,6 @@
 
   {{ partial "footer.html" . }}
 
-  <style>
-    #mobile-menu {
-      background-color: #121416 !important;
-      background: #121416 !important;
-      opacity: 1 !important;
-      z-index: 99999 !important;
-      display: none; /* JS will change to flex */
-    }
-    #mobile-menu.active {
-      display: flex !important;
-    }
-    .nav-logo {
-      width: 140px !important;
-      height: auto !important;
-    }
-  </style>
 
   {{/* ── Mobile Menu (Full-Screen Overlay) ────────────────────────────── */}}
   <div id="mobile-menu" class="fixed inset-0 flex-col overflow-hidden">
