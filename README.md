@@ -6,10 +6,10 @@ Production-ready Hugo static site for **OpenSky Intelligence**, featuring a dark
 
 ## Tech Stack
 
-| Tool | Version | Purpose |
+| Tool | Recommended Version | Purpose |
 |---|---|---|
-| Hugo | v0.128+ (extended) | Static site generator |
-| Tailwind CSS | v3 | Utility-first styling |
+| Hugo | hugo v0.148.2 extended | Static site generator |
+| Tailwind CSS | v3.4.17 | Utility-first styling |
 | PostCSS | v8 | CSS processing pipeline |
 | Autoprefixer | v10 | Vendor prefixing |
 
@@ -21,8 +21,9 @@ Production-ready Hugo static site for **OpenSky Intelligence**, featuring a dark
 # 1. Install dependencies
 npm install
 
-# 2. Start development server
-hugo server --disableFastRender
+# 2. Start development server (with draft content and fast reload)
+npm run dev
+# Alternatively: hugo server --disableFastRender --buildDrafts
 
 # 3. Open browser
 # → http://localhost:1313/
@@ -30,7 +31,8 @@ hugo server --disableFastRender
 
 ### Production Build
 ```bash
-hugo --minify
+npm run build
+# Alternatively: hugo --minify
 # Output → ./public/
 ```
 
@@ -43,7 +45,8 @@ opensky-website/
 ├── hugo.toml                    # Hugo configuration, menus, site params
 ├── tailwind.config.js           # Design system tokens (colors, fonts, spacing)
 ├── postcss.config.js            # PostCSS pipeline
-├── package.json                 # npm dependencies
+├── package.json                 # npm dependencies & development scripts
+├── netlify.toml                 # Netlify deployment configuration
 │
 ├── assets/
 │   └── css/
@@ -53,37 +56,52 @@ opensky-website/
 │   ├── index.html               # Homepage (assembles partials)
 │   ├── _default/
 │   │   ├── baseof.html          # Base HTML shell (all pages extend this)
-│   │   ├── single.html          # Generic content pages
+│   │   ├── single.html          # Generic content pages (e.g. privacy policy)
 │   │   └── list.html            # Generic section list pages
 │   ├── capabilities/
-│   │   └── list.html            # Capabilities section page
+│   │   └── list.html            # Capabilities section main layout
 │   ├── projects/
-│   │   └── list.html            # Projects / Use Cases page
+│   │   └── list.html            # Projects / Use Cases main layout
 │   ├── contact/
-│   │   └── list.html            # Contact page with form
+│   │   ├── list.html            # Contact page layout with form
+│   │   └── thanks.html          # Form submission thank you layout
 │   └── partials/
-│       ├── head.html            # <head>: SEO, fonts, CSS via Hugo Pipes
+│       ├── head.html            # <head>: SEO, preload fonts, CSS via Hugo Pipes
 │       ├── navbar.html          # Sticky navbar + mobile menu
 │       ├── footer.html          # Site footer
 │       ├── hero.html            # Homepage hero section
 │       ├── scripts.html         # Site-wide JavaScript
 │       └── sections/
-│           ├── capabilities.html     # Core Capabilities card grid
-│           ├── tech-stack.html       # Unified Technical Ecosystem section
-│           ├── vehicle-detection.html
-│           ├── gun-detection.html
-│           ├── drone-systems.html
-│           ├── behavior-analysis.html
-│           ├── why-choose-us.html    # 4-column icon cards
-│           └── cta.html             # Call-to-action section
+│           ├── cta.html         # Site-wide Call-to-action partial
+│           ├── capabilities/    # Section partials for Capabilities page
+│           │   ├── behavior-analysis.html
+│           │   ├── cta.html
+│           │   ├── feature-split.html
+│           │   └── header.html
+│           ├── contact/         # Section partials for Contact page
+│           │   ├── contact-grid.html
+│           │   └── contact-header.html
+│           ├── home/            # Section partials for Homepage
+│           │   ├── capabilities.html
+│           │   ├── feature-block.html
+│           │   ├── tech-stack.html
+│           │   └── why-us.html
+│           └── projects/        # Section partials for Projects page
+│               ├── cta.html
+│               ├── header.html
+│               └── project-item.html
 │
 ├── content/
-│   ├── _index.md                # Homepage front matter (hero config)
-│   ├── capabilities/_index.md
-│   ├── projects/_index.md
-│   ├── contact/_index.md
-│   ├── privacy-policy.md
-│   └── terms-of-service.md
+│   ├── _index.md                # Homepage content & front matter
+│   ├── capabilities/
+│   │   └── _index.md            # Capabilities page content & front matter
+│   ├── projects/
+│   │   └── _index.md            # Projects page content & front matter
+│   ├── contact/
+│   │   ├── _index.md            # Contact page content & front matter
+│   │   └── thanks.md            # Thank You page content
+│   ├── privacy-policy.md        # Privacy Policy content
+│   └── terms-of-service.md      # Terms of Service content
 │
 ├── data/
 │   ├── capabilities.yaml        # Core capability cards data
@@ -91,26 +109,29 @@ opensky-website/
 │   └── projects.yaml            # Projects / Use Cases data
 │
 └── static/
-    ├── images/                  # ← Place your images here (see below)
-    └── favicon.png
+    ├── css/
+    │   └── fonts.css            # Font-face CSS declarations
+    ├── fonts/                   # Bundled local web fonts (.woff2)
+    └── images/                  # Site images & visual assets
 ```
 
 ---
 
 ## Adding Images
 
-Replace placeholder paths with your actual images in `static/images/`:
+The layout uses high-fidelity real assets rather than generic placeholders. You can replace them with your actual files in `static/images/`:
 
 | File | Used In |
 |---|---|
-| `/images/logo.png` | Navbar + Footer |
-| `/images/hero-bg.jpg` | Homepage hero background |
-| `/images/tech-1.jpg` through `tech-4.jpg` | Tech Stack mosaic |
-| `/images/vehicle-detection.jpg` | Vehicle Detection section |
-| `/images/gun-detection.jpg` | Gun Detection section |
-| `/images/drone-systems.jpg` | Drone Systems section |
-| `/images/behavior-analysis.jpg` | Behavior Analysis section |
-| `/images/projects/*.jpg` | Projects page cards |
+| `/images/logo.png` | Navbar + Footer branding |
+| `/images/hero-bg.png` | Homepage hero tactical grid/background |
+| `/images/tech-1.png` to `/images/tech-4.png` | Homepage Technical Stack mosaic |
+| `/images/vehicle-detection.jpg` & `vehicle-detection-2.png` | Capabilities: Vehicle Detection components |
+| `/images/gun-detection.png` | Capabilities: Weapon Detection AI section |
+| `/images/drone-systems.png` & `drone-systems-2.png` | Capabilities: Unmanned Systems section |
+| `/images/behavior-analysis.png` | Capabilities: Behavior & Threat Analysis section |
+| `/images/project-*.jpg` & `project-*.png` | Projects / Use Cases detail cards |
+| `/images/contact-tactical-map.jpg` | Contact page tactical map background |
 
 ---
 
@@ -138,28 +159,31 @@ Replace placeholder paths with your actual images in `static/images/`:
 The contact form uses **Netlify Forms** by default.
 
 ### Netlify
-Deploy to Netlify — forms work automatically via the `netlify` attribute.
+Deploy to Netlify — forms work automatically because of the `data-netlify="true"` attribute and redirect to the custom thank-you page `/contact/thanks/`.
 
-### Formspree
-1. Open `layouts/contact/list.html`
-2. Change `action="/success/"` to `action="https://formspree.io/f/YOUR_ID"`
-3. Remove the `netlify` and `netlify-honeypot` attributes
+### Formspree / Other Action
+1. Open `layouts/partials/sections/contact/contact-grid.html`
+2. Change `action="/contact/thanks/"` to your Formspree endpoint (e.g., `action="https://formspree.io/f/YOUR_ID"`)
+3. Remove the `data-netlify="true"` attribute
 
 ---
 
 ## Design System Reference
 
-All tokens are in `tailwind.config.js`:
+All tokens are defined in `tailwind.config.js`:
 
-| Token | Value |
-|---|---|
-| `primary` | `#a4e6ff` (brand cyan) |
-| `surface` | `#121416` (background) |
-| `on-surface` | `#e2e2e5` (text) |
-| Font: Display | Inter |
-| Font: Mono/Labels | Space Grotesk |
+| Token | Value / Font Family | Purpose |
+|---|---|---|
+| `primary` | `#a4e6ff` | Brand cyan accent |
+| `primary-fixed-dim` | `#4cd6ff` | Hover/secondary brand accent |
+| `surface` / `background` | `#121416` | Main deep background |
+| `on-surface` | `#e2e2e5` | Primary body text |
+| `on-surface-variant` | `#bbc9cf` | Muted descriptions/labels |
+| `display-xl` / `headline-lg` | `Inter` | Bold futuristic headers |
+| `body-base` / `body-sm` | `Inter` | Highly readable body text |
+| `label-tech` / `data-mono` | `Space Grotesk` | Monospace data readouts and small indicators |
 
-Custom CSS components: `assets/css/main.css` → `@layer components`
+Custom CSS components are defined in `assets/css/main.css` → `@layer components`.
 
 ---
 
