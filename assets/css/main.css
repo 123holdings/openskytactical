@@ -114,12 +114,12 @@
     animation: fade-in-down 0.2s ease-out forwards;
   }
   .nav-logo {
-    width: 140px !important;
+    width: 180px !important;
     height: auto !important;
   }
   @media (min-width: 1024px) {
     .nav-logo {
-      width: 180px !important;
+      width: 260px !important;
     }
   }
 
