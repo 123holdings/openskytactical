@@ -58,4 +58,4 @@ We reserve the right, at our sole discretion, to modify or replace these Terms a
 For all licensing inquiries, legal notifications, or IP inquiries, contact our legal department:
 
 * **Email**: [ops@opensky.intelligence](mailto:ops@opensky.intelligence)
-* **Address**: 101 Intelligence Way, Arlington, VA 22202
+* **Address**: 2646 Highway 109, Wildwood, MO 63040

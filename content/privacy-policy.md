@@ -64,4 +64,4 @@ To exercise these rights, please submit a signed corporate request to [ops@opens
 For privacy-related inquiries, security disclosures, or audit verifications, contact our Operational Security office:
 
 * **Email**: [ops@opensky.intelligence](mailto:ops@opensky.intelligence)
-* **Address**: 101 Intelligence Way, Arlington, VA 22202
+* **Address**: 2646 Highway 109, Wildwood, MO 63040
