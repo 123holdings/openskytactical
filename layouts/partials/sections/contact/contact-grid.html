@@ -80,8 +80,8 @@
     {{/* Map Visualizer / Google Map */}}
     <div class="flex-grow bg-surface-container border border-white/10 rounded-lg relative overflow-hidden min-h-[300px]">
       <div class="absolute top-2 left-2 z-10 bg-surface/80 backdrop-blur-sm border border-white/10 px-2 py-1 rounded font-data-mono text-[10px] text-primary-container">{{ .map.label }}</div>
-      
-      {{ if .map.api_key }}
+      {{ $googleMapsApiKey := getenv "GOOGLE_MAPS_API_KEY" }}
+      {{ if $googleMapsApiKey }}
         <div id="google-map" class="w-full h-full" data-lat="{{ .map.lat }}" data-lng="{{ .map.lng }}" data-zoom="{{ .map.zoom }}"></div>
         <script>
           function initMap() {
@@ -95,7 +95,7 @@
             new google.maps.Marker({ position: pos, map: map });
           }
         </script>
-        <script async src="https://maps.googleapis.com/maps/api/js?key={{ .map.api_key }}&callback=initMap"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key={{ $googleMapsApiKey }}&callback=initMap"></script>
       {{ else }}
         <img alt="Intelligence Grid Map" class="w-full h-full object-cover opacity-60" src="{{ .map.fallback_image }}">
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">

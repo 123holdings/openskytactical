@@ -37,7 +37,7 @@ sections:
       type: "google"
       # To enable Google Maps, provide a valid API Key below.
       # If empty, the system will fallback to the tactical image.
-      api_key: "AIzaSyCG3vfpPZCfYLgB0y_buOeupDy2VJmnp70"
+      api_key: ""
       lat: 38.5797
       lng: -90.6279
       zoom: 15
