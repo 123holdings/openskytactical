@@ -90,12 +90,7 @@
             const pos = { lat: parseFloat(mapEl.dataset.lat), lng: parseFloat(mapEl.dataset.lng) };
             const map = new google.maps.Map(mapEl, {
               center: pos, zoom: parseInt(mapEl.dataset.zoom), disableDefaultUI: true,
-              styles: [
-                { "elementType": "geometry", "stylers": [{ "color": "#121416" }] },
-                { "elementType": "labels.text.fill", "stylers": [{ "color": "#746855" }] },
-                { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#17263c" }] }
-                /* ... more styles ... */
-              ]
+              mapTypeId: "roadmap"
             });
             new google.maps.Marker({ position: pos, map: map });
           }

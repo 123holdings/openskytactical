@@ -37,10 +37,10 @@ sections:
       type: "google"
       # To enable Google Maps, provide a valid API Key below.
       # If empty, the system will fallback to the tactical image.
-      api_key: ""
-      lat: 38.889931
-      lng: -77.009003
-      zoom: 14
+      api_key: "AIzaSyCG3vfpPZCfYLgB0y_buOeupDy2VJmnp70"
+      lat: 38.5797
+      lng: -90.6279
+      zoom: 15
       fallback_image: "/images/contact-tactical-map.jpg"
       label: "OpenSky HQ"
 ---
