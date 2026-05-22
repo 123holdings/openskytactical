@@ -26,7 +26,7 @@ sections:
       items:
         - icon: "location_on"
           title: "Headquarters"
-          content: "101 Intelligence Way<br>Arlington, VA 22202"
+          content: "2646 Highway 109<br>Wildwood, MO 64040"
         - icon: "mail"
           title: "Email"
           content: "ops@openskyintelligence.com"
