@@ -17,7 +17,7 @@ enableEmoji = false
   description = "Advanced AI Detection & Security Systems. Real-time intelligence powered by computer vision and scalable technology solutions."
   email = "ops@opensky.intelligence"
   address = "2646 Highway 109,\nWildwood, MO 63040"
-  logo = "/images/logo-new2.png"
+  logo = "/images/logo.png"
 
 # ─── Menus ───────────────────────────────────────────────────────────────────
 [[menus.main]]
