@@ -32,7 +32,7 @@ sections:
           content: "ops@openskyintelligence.com"
         - icon: "phone_in_talk"
           title: "Phone Number"
-          content: "+1 (800) 555-0199"
+          content: "+1 (314) 690-8786"
     map:
       type: "google"
       # To enable Google Maps, provide a valid API Key below.
